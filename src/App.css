@@ -221,6 +221,20 @@
   letter-spacing: -0.08em;
 }
 
+.hero-name,
+.hero-headline {
+  display: block;
+}
+
+.hero-name {
+  color: #f8fafc;
+}
+
+.hero-headline {
+  margin-top: 0.7rem;
+  color: #8ce2ff;
+}
+
 .highlight {
   color: #8ce2ff;
 }
@@ -302,9 +316,56 @@
   color: #f8fafc;
 }
 
+.email-link {
+  color: #8ce2ff;
+  font-size: 0.98rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.email-link:hover {
+  text-decoration: underline;
+}
+
 .hero-visual {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.profile-card {
+  position: relative;
+  width: min(100%, 360px);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 1.5rem;
+  background: #f5f7fa;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.42);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.profile-caption {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.85rem;
+  background: rgba(2, 6, 23, 0.78);
+  backdrop-filter: blur(12px);
+}
+
+.profile-caption strong {
+  color: #f8fafc;
 }
 
 .code-window {
@@ -550,6 +611,18 @@
     linear-gradient(120deg, #111827 0%, #4c1d95 100%);
 }
 
+.preview-news {
+  background:
+    linear-gradient(135deg, rgba(45, 212, 191, 0.2), rgba(15, 23, 42, 0.9)),
+    linear-gradient(120deg, #0f172a 0%, #0f766e 100%);
+}
+
+.preview-farming {
+  background:
+    linear-gradient(135deg, rgba(132, 204, 22, 0.22), rgba(15, 23, 42, 0.9)),
+    linear-gradient(120deg, #172554 0%, #3f6212 100%);
+}
+
 .preview-content {
   position: absolute;
   inset: 0;
@@ -570,6 +643,14 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
+}
+
+.project-preview-title {
+  max-width: 260px;
+  margin: 0.9rem 0 0;
+  color: #f8fafc;
+  font-size: 1.15rem;
+  line-height: 1.25;
 }
 
 .preview-shapes {
@@ -608,6 +689,83 @@
   flex: 1;
   flex-direction: column;
   padding: 1.35rem;
+}
+
+.project-insight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+}
+
+.project-insight {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.project-label {
+  color: #8ce2ff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-insight strong {
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.project-story-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.project-story-grid p {
+  margin: 0.55rem 0 0;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.proof-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.65rem;
+}
+
+.project-proof-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(96, 165, 250, 0.28);
+  border-radius: 0.7rem;
+  background: rgba(14, 165, 233, 0.08);
+  color: #c4e9ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.project-proof-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(96, 165, 250, 0.55);
+  background: rgba(14, 165, 233, 0.16);
+}
+
+.proof-label {
+  color: #34d399;
+}
+
+.outcome-label {
+  color: #a78bfa;
 }
 
 .project-header-row {
@@ -878,6 +1036,54 @@
   line-height: 1.8;
 }
 
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1rem;
+  color: #8ce2ff;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.contact-github-link {
+  color: #8ce2ff;
+  text-decoration: none;
+}
+
+.contact-github-link:hover {
+  text-decoration: underline;
+}
+
+.contact-linkedin-link {
+  color: #8ce2ff;
+  text-decoration: none;
+}
+
+.contact-linkedin-link:hover {
+  text-decoration: underline;
+}
+
+.contact-cv-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #8ce2ff;
+  text-decoration: none;
+}
+
+.contact-cv-button:hover {
+  text-decoration: underline;
+}
+
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1060,6 +1266,11 @@
   .project-grid,
   .learning-grid,
   .activity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-insight-grid,
+  .project-story-grid {
     grid-template-columns: 1fr;
   }
 

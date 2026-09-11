@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { createElement, useEffect, useState } from 'react'
 import {
   ArrowRight,
-  BrainCircuit,
   ChevronRight,
   Cloud,
   Code2,
@@ -11,12 +10,14 @@ import {
   Globe,
   Mail,
   MonitorSmartphone,
+  Phone,
   Rocket,
   ServerCog,
   Sparkles,
   TerminalSquare,
-  Type,
 } from 'lucide-react'
+import studentProfile from './assets/studentpfp.gif'
+import resumePdf from './assets/resume.pdf'
 import './App.css'
 
 const navItems = [
@@ -24,7 +25,6 @@ const navItems = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
-  { id: 'journey', label: 'Journey' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -32,244 +32,272 @@ const skillGroups = [
   {
     title: 'Frontend',
     icon: MonitorSmartphone,
-    items: ['HTML', 'CSS', 'JavaScript', 'React', 'JSX', 'TypeScript'],
+    items: ['React', 'Tailwind CSS', 'Bootstrap'],
   },
   {
     title: 'Backend',
     icon: ServerCog,
-    items: ['Node.js', 'Express.js', 'REST API'],
+    items: ['ExpressJS', 'REST API', 'MVC'],
   },
   {
     title: 'Database',
     icon: Database,
-    items: ['MySQL', 'SQL Server', 'Azure Database', 'MongoDB'],
+    items: ['MySQL', 'SQL Server', 'MongoDB', 'Azure SQL'],
   },
   {
     title: 'Programming',
     icon: Code2,
-    items: ['JavaScript', 'Python', 'C#'],
+    items: ['JavaScript', 'Python', 'SQL', 'C#'],
   },
   {
     title: 'Tools & Technologies',
     icon: TerminalSquare,
-    items: ['Git', 'GitHub', 'Postman', 'Docker', 'Vercel'],
+    items: ['GitHub', 'Postman', 'Trello', 'ClickUp', 'Figma', 'VS Code'],
   },
   {
-    title: 'AI / Data',
-    icon: BrainCircuit,
-    items: ['Machine Learning', 'AI APIs', 'RAG', 'Prompt Engineering'],
+    title: 'Deployment',
+    icon: Cloud,
+    items: ['Vercel', 'Railway'],
   },
 ]
 
 const projects = [
   {
     id: 'bookboy',
-    title: 'BookBoy — E-commerce Platform',
-    category: 'Full-Stack Web App',
+    title: 'BookBoy — E-Commerce Bookstore Web App',
+    category: 'May - April 2025',
     description:
-      'A full-stack e-commerce web application for browsing and purchasing books, designed to make online book shopping simple and engaging.',
+      'An e-commerce bookstore web app where I focused mainly on backend development and connected the backend services with the frontend experience.',
     problem:
-      'The goal was to create a practical marketplace experience where users can browse titles, view product details, and complete purchases with a clean shopping flow.',
+      'The web app needed reliable backend operations while keeping data and interactions connected smoothly with the frontend.',
     goal:
-      'Build a polished book store interface backed by a functional API layer, with a focus on usability, product discovery, and an easy onboarding path for future expansion.',
+      'Build a maintainable bookstore web app with a connected backend, frontend, API, and database workflow.',
     solution:
-      'I structured the app around a customer-first experience, combining product listing, search, and checkout-focused UI patterns with backend endpoints for managing catalog and order-related data.',
+      'I developed the Express.js RESTful backend, implemented CRUD endpoints for comments, integrated MySQL, and connected the backend API with the frontend.',
+    role: 'Backend Developer / Frontend Integration',
+    proof: 'Web App / REST API / MySQL / Frontend Integration',
+    outcome: 'A connected bookstore web app with backend-driven frontend features.',
     features: [
-      'Responsive storefront and product listing pages',
-      'Book detail views with pricing and category filtering',
-      'Cart and checkout experience for product flow',
-      'API-driven data handling for catalog and orders',
+      'RESTful APIs for backend operations',
+      'CRUD endpoints for user comments associated with books',
+      'MySQL database integration for books and comments',
     ],
     architecture: [
-      'Frontend: React application with reusable UI sections',
-      'Backend: Express.js endpoints for catalog and order logic',
-      'Data: Azure Database to store product and transactional data',
-      'Deployment: Vercel-friendly frontend and lightweight backend setup',
+      'Frontend: React and JavaScript web interface',
+      'Backend: Express.js RESTful API',
+      'Data: MySQL database for books and comments',
+      'Integration: Connected backend APIs with the frontend web app',
+      'API: CRUD operations for user comments',
     ],
-    technologies: ['React', 'Express.js', 'Azure Database', 'REST API'],
+    technologies: ['React', 'JavaScript', 'Express.js', 'MySQL', 'REST API', 'CRUD'],
     challenges: [
-      'Designing an app structure that could scale from a prototype into a fuller e-commerce workflow.',
-      'Balancing clean storefront UX with enough backend logic to feel realistic and functional.',
+      'Keeping API operations and database relationships organized as features expanded.',
+      'Designing comment endpoints that are tied correctly to individual books.',
     ],
     learnings: [
-      'How frontend structure and API design work together in a real product.',
-      'The importance of keeping business logic organized so the app stays maintainable as features grow.',
+      'How RESTful API design supports real application features.',
+      'The importance of database structure and CRUD logic in a full-stack project.',
     ],
     future: [
-      'Add authentication and user accounts',
-      'Introduce reviews, wishlist support, and promotional pricing',
-      'Expand the admin dashboard for catalog management',
+      'Add authentication and richer book discovery features',
+      'Improve comment moderation and validation',
     ],
     preview: 'bookboy',
     links: {
-      github: '#',
+      github: 'https://github.com/chobul/BookBoy_Bookstore',
       demo: '#',
     },
   },
   {
     id: 'event-organizer',
-    title: 'Event Organizer Platform',
-    category: 'Web Platform',
+    title: 'ChopShop — E-Commerce Clothing Store Platform',
+    category: 'Jan - April 2026',
     description:
-      'A web platform designed to help customers explore event equipment and instantly estimate costs based on configurable dimensions and quantities.',
+      'An e-commerce platform for selling clothing products online with product management and display features.',
     problem:
-      'Customers often need a fast way to understand available event setup options and estimate the cost of renting equipment without contacting a provider manually.',
+      'The platform needed a structured way to manage clothing products and present them clearly to customers.',
     goal:
-      'Create a practical quoting experience that helps users browse inventory, configure quantities, and understand pricing clearly.',
+      'Build a maintainable online store backed by Azure SQL Database.',
     solution:
-      'I built an interactive platform where product cards, quantity controls, and estimate logic work together so users can evaluate costs in real time.',
+      'I developed product management and product display functionality, integrated Azure SQL Database, and applied MVC architecture.',
+    role: 'Full-Stack Developer',
+    proof: 'E-Commerce Platform / Azure SQL / MVC',
+    outcome: 'A structured clothing store platform with product workflows.',
     features: [
-      'Explore equipment categories and item details',
-      'Dynamic quantity and dimension-based cost estimation',
-      'Clean product comparisons for different event needs',
-      'Simple and responsive interface for mobile and desktop',
+      'Product management functionality',
+      'Product display for online customers',
+      'Azure SQL Database integration',
+      'Model-View-Controller architecture',
     ],
     architecture: [
-      'Frontend: React interface with reusable cards and form logic',
-      'Logic: JavaScript-powered cost estimation workflows',
-      'Backend: Node.js endpoints for structured order-related operations',
-      'Deployment: Lightweight hosting for iterative improvements',
+      'Architecture: Model-View-Controller (MVC)',
+      'Data: Azure SQL Database for storage and retrieval',
+      'Core: Product management and display workflows',
     ],
-    technologies: ['React', 'JavaScript', 'Node.js'],
+    technologies: ['MVC', 'Azure SQL', 'E-Commerce'],
     challenges: [
-      'Making a cost calculation feature accurate and intuitive without adding unnecessary complexity.',
-      'Keeping the interface understandable while still supporting custom dimensions and quantities.',
+      'Connecting product management flows with reliable database storage.',
+      'Keeping the store structure organized as product features grew.',
     ],
     learnings: [
-      'How real-world business logic can be translated into UI behavior that feels helpful and reliable.',
-      'The value of designing systems that are easy to adjust when requirements evolve.',
+      'How MVC separates application responsibilities and improves maintainability.',
+      'How database integration supports a practical e-commerce workflow.',
     ],
     future: [
-      'Add user accounts and saved quotations',
-      'Integrate booking workflow and admin inventory management',
-      'Improve pricing logic with tax and service-fee handling',
+      'Add authentication and checkout functionality',
+      'Add categories, search, and inventory tracking',
     ],
     preview: 'event',
     links: {
-      github: '#',
+      github: 'https://github.com/chobul/ChopShop',
       demo: '#',
     },
   },
   {
-    id: 'ai-project',
-    title: 'AI / Machine Learning Project',
-    category: 'Data-Driven Experiment',
+    id: 'news-line-chatbot',
+    title: 'NewsLineChatBot — NewsArticleBot',
+    category: 'Automation Workflow',
     description:
-      'An experimental machine learning project focused on solving a real-world problem using data-driven prediction or recommendation.',
+      'A LINE Bot that uses Gemini AI to analyze and summarize news articles from text and images, then automatically saves the results to Google Sheets through Make.com.',
     problem:
-      'Many everyday decisions benefit from a more informed recommendation system, but building that kind of insight from raw data requires thoughtful modeling and evaluation.',
+      'Reading and organizing news from different formats can take time, especially when summaries and analysis need to be recorded consistently.',
     goal:
-      'Explore how machine learning can support a practical problem by transforming data into a useful prediction or recommendation workflow.',
+      'Create an automated workflow that accepts news content through LINE, generates useful AI summaries, and stores structured results without manual data entry.',
     solution:
-      'I worked through the full practical pipeline: data preparation, model experimentation, evaluation, and a simple interface to demonstrate the results clearly.',
+      'I connected LINE User input to a Make.com automation workflow that processes webhook data with Gemini AI and records the analyzed article results in Google Sheets.',
+    role: 'Automation Developer',
+    proof: 'LINE Bot / Make.com / Gemini AI / Google Sheets',
+    outcome: 'An automated news analysis workflow with saved summaries.',
     features: [
-      'Data collection and preprocessing workflow',
-      'Machine learning model experimentation with comparison',
-      'Prediction or recommendation output for end users',
-      'Clear documentation of assumptions and evaluation choices',
+      'Receive news article text and images through LINE',
+      'Process incoming messages with Make.com webhooks',
+      'Analyze and summarize articles with Gemini AI',
+      'Automatically save results and article data to Google Sheets',
     ],
     architecture: [
-      'Data processing: Python scripts for cleaning and feature preparation',
-      'Modeling: Machine learning experimentation and evaluation pipeline',
-      'Output: Simple interface or notebook-driven results presentation',
-      'Learning: Iterative improvement based on model performance',
+      'Input: LINE User sends article text or an image',
+      'Automation: Make.com receives and routes the webhook workflow',
+      'AI: Gemini analyzes the article and creates a summary',
+      'Storage: Google Sheets records the processed results automatically',
     ],
-    technologies: ['Python', 'Machine Learning'],
+    technologies: ['LINE Bot', 'Make.com', 'Gemini AI', 'Google Sheets', 'Automation'],
     challenges: [
-      'Selecting a problem that is realistic enough to matter but still manageable for a student project.',
-      'Understanding how model quality depends on data quality and evaluation strategy.',
+      'Designing one workflow that can handle both text and image-based article input.',
+      'Keeping AI output structured so it can be stored consistently in Google Sheets.',
     ],
     learnings: [
-      'How data problems, feature choices, and evaluation all shape model outcomes.',
-      'The importance of being able to explain and refine decisions when an experiment is not working as expected.',
+      'How no-code automation can connect messaging platforms, AI services, and data storage.',
+      'How webhook workflows can turn an AI prototype into a practical user-facing tool.',
     ],
     future: [
-      'Improve model performance with richer features and tuning',
-      'Add a small web dashboard for user-facing results',
-      'Explore AI APIs and RAG-based workflows for real-world use cases',
+      'Add article categories, keywords, and sentiment analysis',
+      'Improve error handling for unsupported images or incomplete article content',
+      'Add search and dashboard views for saved article summaries',
     ],
-    preview: 'ai',
+    preview: 'news',
     links: {
-      github: '#',
+      github: 'https://github.com/chobul/NewsLine_ChatBot',
       demo: '#',
     },
   },
-]
-
-const journey = [
   {
-    year: '2023',
-    title: 'Started exploring programming and Computer Science',
-    text:
-      'Focused on learning core programming concepts, problem-solving, and how software systems are built from the ground up.',
-  },
-  {
-    year: '2024',
-    title: 'Improved programming fundamentals',
-    text:
-      'Strengthened my understanding of logic, data structures, web development basics, and practical coding habits through hands-on projects.',
-  },
-  {
-    year: '2025',
-    title: 'Started building full-stack web projects',
-    text:
-      'Moved from theory into creating useful applications, learning how frontend, backend, and database layers connect in real projects.',
-  },
-  {
-    year: '2026',
-    title: 'Exploring AI, Machine Learning, and real-world software work',
-    text:
-      'Currently expanding into AI-driven ideas, backend design, deployment workflows, and software engineering practices useful for internships and future roles.',
+    id: 'integrated-farming',
+    title: 'Integrated Farming — RAG Assistant',
+    category: 'RAG Application',
+    description:
+      'A RAG-powered integrated farming application that helps users retrieve useful agricultural knowledge and receive context-aware answers.',
+    problem:
+      'Agricultural information can be spread across many documents, making it difficult for users to find reliable and relevant guidance quickly.',
+    goal:
+      'Build an intelligent farming assistant that can search a knowledge base and generate grounded answers from retrieved agricultural information.',
+    solution:
+      'I designed a Retrieval-Augmented Generation workflow that uses FAISS to retrieve relevant knowledge, FastAPI to serve the backend, and Groq with llama-3.1-8b to generate responses for a React interface.',
+    role: 'RAG Application Developer',
+    proof: 'FastAPI / FAISS / Groq / React',
+    outcome: 'A farming assistant that answers questions from retrieved context.',
+    features: [
+      'Retrieve relevant farming knowledge from a vector index',
+      'Generate context-aware answers with a Groq-hosted language model',
+      'FastAPI backend for handling retrieval and question-answering requests',
+      'React interface for interacting with the farming assistant',
+    ],
+    architecture: [
+      'Frontend: React user interface for farming questions and answers',
+      'Backend: FastAPI service for the RAG pipeline and API requests',
+      'Retrieval: FAISS vector search for relevant agricultural context',
+      'Generation: Groq using the llama-3.1-8b model',
+      'Version control: GitHub for source code and collaboration',
+    ],
+    technologies: ['RAG', 'FastAPI', 'FAISS', 'Groq', 'llama-3.1-8b', 'React', 'GitHub'],
+    challenges: [
+      'Improving retrieval quality so generated answers stay relevant to the farming question.',
+      'Connecting the retrieval pipeline and language model into a responsive web experience.',
+    ],
+    learnings: [
+      'How Retrieval-Augmented Generation combines vector search with language models.',
+      'How backend APIs, retrieval quality, and frontend UX work together in an AI application.',
+    ],
+    future: [
+      'Add more agricultural documents and domain-specific knowledge sources',
+      'Support multilingual farming questions and responses',
+      'Add user feedback to improve retrieval and answer quality',
+    ],
+    preview: 'farming',
+    links: {
+      github: 'https://github.com/chobul/IntegratedFarming_Chatbot',
+      demo: '#',
+    },
   },
 ]
 
 const learningCards = [
   {
-    title: 'TypeScript',
-    description: 'Improving type safety and writing more maintainable frontend and backend code.',
-    icon: Type,
+    title: 'English',
+    description: 'CEFR-B2 communication level for technical learning and collaboration.',
+    icon: Globe,
   },
   {
     title: 'React',
-    description: 'Deepening my component architecture, state management, and UI polish skills.',
+    description: 'Building responsive interfaces and practical e-commerce experiences.',
     icon: MonitorSmartphone,
   },
   {
     title: 'Backend Architecture',
-    description: 'Learning how to design APIs, organize services, and think about scalability.',
+    description: 'Applying MVC concepts and organizing backend responsibilities.',
     icon: ServerCog,
   },
   {
     title: 'Database Design',
-    description: 'Exploring data modeling, queries, and how structure affects application performance.',
+    description: 'Working with MySQL, SQL Server, MongoDB, and Azure SQL data.',
     icon: Database,
   },
   {
-    title: 'Machine Learning',
-    description: 'Studying how models learn from data and where ML makes sense in real-world products.',
-    icon: BrainCircuit,
+    title: 'Deployment',
+    description: 'Learning practical deployment workflows with Vercel and Railway.',
+    icon: Rocket,
   },
   {
-    title: 'AI / RAG',
-    description: 'Investigating AI workflows, prompting strategies, and retrieval-based systems.',
+    title: 'Project Management',
+    description: 'Organizing project work with Trello and ClickUp.',
     icon: Sparkles,
   },
   {
-    title: 'Docker',
-    description: 'Building familiarity with containerization and consistent development environments.',
-    icon: TerminalSquare,
+    title: 'Design & Collaboration',
+    description: 'Using Figma to plan and communicate interface ideas.',
+    icon: MonitorSmartphone,
   },
   {
-    title: 'Cloud Deployment',
-    description: 'Learning how to ship projects cleanly and make them accessible to real users.',
-    icon: Cloud,
+    title: 'Code Editor',
+    description: 'Building projects with Visual Studio Code.',
+    icon: TerminalSquare,
   },
 ]
 
 const links = {
   github: 'https://github.com/chobul',
-  linkedin: 'https://www.linkedin.com/',
+  linkedin: 'https://www.linkedin.com/in/chonlakorn-bualuang-bba1b842a/',
   email: 'mailto:chonlakornbualuang@gmail.com',
+  phone: 'tel:+66985620617',
 }
 
 function App() {
@@ -347,16 +375,16 @@ function App() {
               </div>
 
               <h1>
-                Hi, I&apos;m <span className="highlight">Chonlakorn Bualuang</span>.
-                <span className="line-break">Computer Science Student</span>
-                <span className="line-break block">Building Things With Code.</span>
+                <span className="hero-name">Chonlakorn Bualuang</span>
+                <span className="hero-headline">Full-Stack Developer</span>
+                <span className="line-break block">Building Practical Web Apps.</span>
               </h1>
 
               <p className="hero-text">
-                I&apos;m a Computer Science student passionate about software
-                development, web technologies, and AI. I enjoy turning ideas
-                into practical projects while continuously improving my
-                problem-solving and programming skills.
+                A calm and open-minded Computer Science student who enjoys
+                learning new technologies and developing new skills. Eager to
+                gain hands-on experience, take on new challenges, and grow as
+                a software developer.
               </p>
 
               <div className="hero-actions">
@@ -367,6 +395,15 @@ function App() {
                 <a href="#contact" className="secondary-button">
                   Let&apos;s Connect
                 </a>
+                <a
+                  href={resumePdf}
+                  className="secondary-button"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View CV
+                  <ExternalLink size={17} />
+                </a>
               </div>
 
               <div className="hero-meta">
@@ -376,12 +413,34 @@ function App() {
                 </div>
                 <div>
                   <span className="meta-label">Interests</span>
-                  <strong>Web, AI, Backend</strong>
+                  <strong>AI, Automation, Web Development</strong>
+                </div>
+                <div>
+                  <span className="meta-label">University</span>
+                  <strong>Sripatum University</strong>
+                </div>
+                <div>
+                  <span className="meta-label">Email</span>
+                  <a className="email-link" href={links.email}>
+                    chonlakornbualuang@gmail.com
+                  </a>
                 </div>
               </div>
             </div>
 
-            <div className="hero-visual" aria-label="Developer workspace preview">
+            <div className="hero-visual" aria-label="Student profile and developer workspace preview">
+              <div className="profile-card">
+                <img
+                  className="profile-image"
+                  src={studentProfile}
+                  alt="Chonlakorn Bualuang in a white shirt and tie"
+                />
+                <div className="profile-caption">
+                  <span className="mini-label">Student profile</span>
+                  <strong>Computer Science · Builder</strong>
+                </div>
+              </div>
+
               <div className="code-window">
                 <div className="window-bar">
                   <div className="traffic-lights">
@@ -401,10 +460,10 @@ function App() {
                     name: <span className="token-string">&apos;Chonlakorn Bualuang&apos;</span>,
                   </div>
                   <div className="code-line nested">
-                    major: <span className="token-string">&apos;Computer Science&apos;</span>,
+                    role: <span className="token-string">&apos;Full-Stack Developer&apos;</span>,
                   </div>
                   <div className="code-line nested">
-                    passions: <span className="token-string">[&apos;Web Dev&apos;, &apos;AI&apos;, &apos;Software&apos;]</span>,
+                    stack: <span className="token-string">[&apos;React&apos;, &apos;ExpressJS&apos;, &apos;SQL&apos;]</span>,
                   </div>
                   <div className="code-line">{'}'}</div>
                   <div className="code-line">
@@ -416,12 +475,12 @@ function App() {
 
                 <div className="mini-panels">
                   <div className="mini-panel">
-                    <span className="mini-label">Learning</span>
-                    <strong>React • Node.js • AI</strong>
+                    <span className="mini-label">Education</span>
+                    <strong>Computer Science</strong>
                   </div>
                   <div className="mini-panel accent-panel">
-                    <span className="mini-label">Current focus</span>
-                    <strong>Full-stack + ML</strong>
+                    <span className="mini-label">Location</span>
+                    <strong>Minburi, Bangkok</strong>
                   </div>
                 </div>
               </div>
@@ -439,38 +498,38 @@ function App() {
             <div className="about-grid">
               <div className="about-copy">
                 <p>
-                  I&apos;m a Computer Science student interested in software
-                  development and emerging technologies. My journey started with
-                  learning programming fundamentals and gradually evolved into
-                  building practical projects.
+                  A calm and open-minded Computer Science student who enjoys
+                  learning new technologies and developing new skills.
                 </p>
                 <p>
-                  I believe in learning by building. Instead of only studying
-                  theory, I challenge myself to create projects, understand how
-                  systems work, and continuously improve my skills. That mindset
-                  has helped me move from writing small programs to exploring
-                  larger, full-stack solutions and AI-driven ideas.
+                  I am eager to gain hands-on experience, take on new
+                  challenges, and grow as a software developer through practical
+                  projects and continuous learning.
                 </p>
               </div>
 
               <aside className="info-card">
-                <div className="info-card-header">Currently</div>
+                <div className="info-card-header">Education</div>
                 <ul className="info-list">
                   <li>
-                    <span className="list-label">Studying</span>
-                    <span>Computer Science</span>
+                    <span className="list-label">University</span>
+                    <span>Sripatum University · 2023 - Present</span>
                   </li>
                   <li>
-                    <span className="list-label">Focus</span>
-                    <span>Software Development</span>
+                    <span className="list-label">University GPAX</span>
+                    <span>2.92</span>
                   </li>
                   <li>
-                    <span className="list-label">Interests</span>
-                    <span>Web Development, AI, Backend Development</span>
+                    <span className="list-label">School</span>
+                    <span>Marialai School · 2017 - 2023</span>
                   </li>
                   <li>
-                    <span className="list-label">Learning</span>
-                    <span>React, Node.js, TypeScript, SQL, AI/ML</span>
+                    <span className="list-label">School GPAX</span>
+                    <span>2.72</span>
+                  </li>
+                  <li>
+                    <span className="list-label">Languages</span>
+                    <span>Thai: Native · English: CEFR-B2</span>
                   </li>
                 </ul>
               </aside>
@@ -486,10 +545,10 @@ function App() {
             </div>
 
             <div className="skill-grid">
-              {skillGroups.map(({ title, icon: Icon, items }) => (
+              {skillGroups.map(({ title, icon, items }) => (
                 <div key={title} className="skill-group">
                   <div className="group-header">
-                    <Icon size={18} />
+                    {createElement(icon, { size: 18 })}
                     <h3>{title}</h3>
                   </div>
                   <div className="tag-list">
@@ -517,7 +576,10 @@ function App() {
                 <article key={project.id} className="project-card">
                   <div className={`project-preview preview-${project.preview}`}>
                     <div className="preview-content">
-                      <span className="preview-category">{project.category}</span>
+                      <div>
+                        <span className="preview-category">Featured Project</span>
+                        <h3 className="project-preview-title">{project.title}</h3>
+                      </div>
                       <div className="preview-shapes">
                         <span />
                         <span />
@@ -527,15 +589,44 @@ function App() {
                   </div>
 
                   <div className="project-body">
-                    <div className="project-header-row">
-                      <h3>{project.title}</h3>
+                    <div className="project-insight-grid">
+                      <div className="project-insight">
+                        <span className="project-label">Problem</span>
+                        <strong>{project.problem}</strong>
+                      </div>
+                      <div className="project-insight">
+                        <span className="project-label">Solution</span>
+                        <strong>{project.solution}</strong>
+                      </div>
+                      <div className="project-insight">
+                        <span className="project-label">My Role</span>
+                        <strong>{project.role}</strong>
+                      </div>
+                      <div className="project-insight">
+                        <span className="project-label">Tech</span>
+                        <strong>{project.technologies.join(' · ')}</strong>
+                      </div>
                     </div>
 
-                    <p>{project.description}</p>
-
-                    <div className="project-detail-block">
-                      <span className="detail-label">Problem</span>
-                      <p>{project.problem}</p>
+                    <div className="project-story-grid">
+                      <div>
+                        <span className="project-label proof-label">Proof</span>
+                        <div className="proof-actions">
+                          <a
+                            href={project.links.github}
+                            className="project-proof-button"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <GitBranch size={15} />
+                            GitHub
+                          </a>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="project-label outcome-label">Outcome</span>
+                        <p>{project.outcome}</p>
+                      </div>
                     </div>
 
                     <div className="project-tech-list">
@@ -547,14 +638,6 @@ function App() {
                     </div>
 
                     <div className="project-actions">
-                      <a href={project.links.github} className="ghost-button">
-                        GitHub
-                        <GitBranch size={16} />
-                      </a>
-                      <a href={project.links.demo} className="ghost-button">
-                        Live Demo
-                        <ExternalLink size={16} />
-                      </a>
                       <button
                         type="button"
                         className="text-button"
@@ -571,27 +654,6 @@ function App() {
           </div>
         </section>
 
-        <section id="journey" className="section alt-section">
-          <div className="container">
-            <div className="section-heading center">
-              <span className="section-tag">Learning Journey</span>
-              <h2>How my development path has grown over time.</h2>
-            </div>
-
-            <div className="timeline">
-              {journey.map((item) => (
-                <div key={item.year} className="timeline-item">
-                  <div className="timeline-year">{item.year}</div>
-                  <div className="timeline-content">
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="section">
           <div className="container">
             <div className="section-heading">
@@ -600,10 +662,10 @@ function App() {
             </div>
 
             <div className="learning-grid">
-              {learningCards.map(({ title, description, icon: Icon }) => (
+              {learningCards.map(({ title, description, icon }) => (
                 <div key={title} className="learning-card">
                   <div className="learning-icon">
-                    <Icon size={20} />
+                    {createElement(icon, { size: 20 })}
                   </div>
                   <h3>{title}</h3>
                   <p>{description}</p>
@@ -655,7 +717,7 @@ function App() {
               <div className="activity-panel">
                 <span className="mini-label">Technology interests</span>
                 <div className="tag-list compact">
-                  {['React', 'Node.js', 'TypeScript', 'AI APIs', 'SQL', 'Docker'].map((item) => (
+                  {['JavaScript', 'Python', 'SQL', 'C#', 'React', 'ExpressJS'].map((item) => (
                     <span key={item} className="skill-tag">
                       {item}
                     </span>
@@ -673,23 +735,50 @@ function App() {
               <h2>Let&apos;s Build Something.</h2>
               <p>
                 Whether it&apos;s a project, collaboration, or just a conversation
-                about technology, feel free to reach out.
+                about technology, feel free to reach out. Based in Minburi,
+                Bangkok.
               </p>
             </div>
 
             <div className="contact-actions">
-              <a href={links.github} className="primary-button" target="_blank" rel="noreferrer">
+              <a
+                className="contact-detail contact-github-link"
+                href={links.github}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <GitBranch size={18} />
-                GitHub
+                <span>GitHub: chobul</span>
               </a>
-              <a href={links.linkedin} className="secondary-button" target="_blank" rel="noreferrer">
+              <a
+                className="contact-detail contact-linkedin-link"
+                href={links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Globe size={18} />
-                LinkedIn
+                <span>LinkedIn: Chonlakorn Bualuang</span>
               </a>
-              <a href={links.email} className="secondary-button">
+              <div className="contact-detail">
+                <Phone size={18} />
+                <span>+66 98-562-0617</span>
+              </div>
+              <div className="contact-detail">
                 <Mail size={18} />
-                Email
-              </a>
+                <span>chonlakornbualuang@gmail.com</span>
+              </div>
+              <div className="contact-detail">
+                <ExternalLink size={18} />
+                <a
+                  href={resumePdf}
+                  className="contact-cv-button"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  View CV
+                  <ExternalLink size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -698,15 +787,15 @@ function App() {
       <footer className="site-footer">
         <div className="container footer-wrap">
           <p>
-            <span className="footer-name">Your Name</span> — Computer Science Student
+            <span className="footer-name">Chonlakorn Bualuang</span> — Full-Stack Developer
           </p>
-          <p>Built with React / Next.js</p>
+          <p>Computer Science · Sripatum University</p>
           <div className="footer-links">
             <a href={links.github} target="_blank" rel="noreferrer">
               GitHub
             </a>
-            <a href={links.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn
+            <a href={links.phone}>
+              Phone
             </a>
             <a href={links.email}>Email</a>
           </div>
