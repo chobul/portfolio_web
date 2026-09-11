@@ -47,7 +47,7 @@ const skillGroups = [
   {
     title: 'Programming',
     icon: Code2,
-    items: ['JavaScript', 'Python', 'SQL', 'C#'],
+    items: ['HTML', 'CSS', 'JavaScript', 'Python', 'SQL', 'C#'],
   },
   {
     title: 'Tools & Technologies',
